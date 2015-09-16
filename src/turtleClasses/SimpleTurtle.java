@@ -853,32 +853,64 @@ public class SimpleTurtle {
 
     public void writeDXF(String filename){
         //Set the scaling such that 1 pixel is 0.25mm
-        writeDXF(filename, getModelDisplay().getWidth());
+        writeDXF(filename, 0.25);
     }
 
     /**
      * Write out a DXF file containing all the line segments we've drawn
      *
      * @param filename dxf file to write out
-     * @param out_width width of the resulting artwork (in mm). Scales the turtle graphics drawing proportionally
+     * @param scaling How much to scale the coordinates
      */
-    public void writeDXF(String filename, double out_width){
-        double scaling = out_width / getModelDisplay().getWidth();
-        double xmin, xmax, ymin, ymax;
+    public void writeDXF(String filename, double scaling){
 
+        //Find the bounding box of the artwork
+        double xmin, xmax, ymin, ymax;
+        xmin = 1.0e99;
+        ymin = 1.0e99;
+        xmax = -1.0e99;
+        ymax = -1.0e99;
+        for(PathSegment p : pen.getSegments()){
+            //Man this was so much easier with numpy
+            xmin = Math.min(xmin, p.getLine().getX1() * scaling);
+            xmin = Math.min(xmin, p.getLine().getX2() * scaling);
+            xmax = Math.max(xmax, p.getLine().getX1() * scaling);
+            xmax = Math.max(xmax, p.getLine().getX2() * scaling);
+            ymin = Math.min(ymin, p.getLine().getY1() * scaling);
+            ymin = Math.min(ymin, p.getLine().getY2() * scaling);
+            ymax = Math.max(ymax, p.getLine().getY1() * scaling);
+            ymax = Math.max(ymax, p.getLine().getY2() * scaling);
+        }
+
+        double max_width = 150;
+        double max_height = 100;
+        double width = xmax - xmin;
+        double height = ymax - ymin;
+        boolean bad = false;
+        if(width > max_width) {
+            System.out.println(String.format("Your drawing has width %.2fmm, but the maximum allowed is %.0fmm", width, max_width));
+            bad = true;
+        }
+        if(height > max_height) {
+            System.out.println(String.format("Your drawing has height %.2fmm, but the maximum allowed is %.0fmm", height, max_height));
+            bad=true;
+        }
+
+//        if(bad)
+//            return;
 
         try {
             DXFfile file = new DXFfile(filename);
-            double height = getModelDisplay().getHeight();
+            double mheight = getModelDisplay().getHeight();
             for (PathSegment p : pen.getSegments()) {
                 //Invert y coordinates
 //                p.getLine().y1 = getModelDisplay().getHeight() - p.getLine().y1;
 //                p.getLine().y2 = getModelDisplay().getHeight() - p.getLine().y2;
                 file.addLineSegment(
                         p.getLine().getX1() * scaling,
-                        (height - p.getLine().getY1()) * scaling,
+                        (mheight - p.getLine().getY1()) * scaling,
                         p.getLine().getX2() * scaling,
-                        (height - p.getLine().getY2()) * scaling);
+                        (mheight - p.getLine().getY2()) * scaling);
             }
             file.close();
         }catch(FileNotFoundException e){
@@ -887,5 +919,4 @@ public class SimpleTurtle {
     }
 
 } // end of class
-
 

@@ -69,27 +69,39 @@ public class Turtle extends SimpleTurtle {
     }
 
     /////////////////// methods ///////////////////////
-    public void triangle(int base, int height){
+    public void triangle(int base, int height, int depth){
         double angle = Math.toDegrees(Math.atan2(2 * height, base));
         turn(-angle);
         int hypot = (int)Math.round(Math.sqrt( Math.pow(base / 2.0, 2) + Math.pow(height, 2.0) ));
-        forward(hypot);
-        turn(2*angle);
-        forward(hypot);
+        if(depth==0) {
+            forward(hypot);
+        }else{
+            forward(hypot/3);
+            triangle(hypot / 3, height / 3, depth - 1);
+            forward(hypot/3);
+        }
+        turn(2 * angle);
+        if (depth == 0) {
+            forward(hypot);
+        }else{
+            forward(hypot/3);
+            triangle(hypot / 3, height/3, depth-1);
+            forward(hypot/3);
+        }
         turn(-angle);
     }
 
 
     public static void spikey(int sides){
         Turtle t = new Turtle(960/2,150,new World(960,720));
-        t.setDelay(30);
+        t.setDelay(5);
         t.setHeading(90);
         for(int i=0;i<sides;i++){
             //t.forward(100);
-            t.triangle(100,100);
+            t.triangle(100,100,2);
             t.turn(360.0/sides);
         }
-        t.writeDXF("spikes.dxf");
+        t.writeDXF("snowflake.dxf");
     }
 
 
@@ -102,7 +114,7 @@ public class Turtle extends SimpleTurtle {
 //        t1.moveTo(50,50);
 //        t1.writeDXF("test.dxf");
 
-        spikey(15);
+        spikey(8);
     }
 
 } // this } is the end of class Turtle, put all new methods before this
