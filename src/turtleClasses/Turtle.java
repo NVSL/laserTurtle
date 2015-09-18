@@ -98,7 +98,7 @@ public class Turtle extends SimpleTurtle {
         t.setHeading(90);
         for(int i=0;i<sides;i++){
             //t.forward(100);
-            t.triangle(100,100,2);
+            t.triangle(120,120,2);
             t.turn(360.0/sides);
         }
         t.writeDXF("snowflake.dxf");

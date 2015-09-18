@@ -896,6 +896,8 @@ public class SimpleTurtle {
             bad=true;
         }
 
+        System.out.println(String.format("%fx%fmm",width,height));
+
 //        if(bad)
 //            return;
 
