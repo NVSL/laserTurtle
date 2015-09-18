@@ -401,7 +401,7 @@ public class SimplePicture implements DigitalPicture
  /**
   * Method to open a picture explorer on a copy of this simple picture
   */
- /******* Not implemented for Turtle
+ /******* Not implemented for turtleClasses.Turtle
  public void explore()
  {
    // create a copy of the current picture and explore it
@@ -447,7 +447,7 @@ public class SimplePicture implements DigitalPicture
    if (!file.canRead()) 
    {
      // try adding the media path 
-     /**** Not implemented in Turtle ****/
+     /**** Not implemented in turtleClasses.Turtle ****/
      // file = new File(FileChooser.getMediaPath(this.fileName));
      if (!file.canRead())
      {
@@ -654,7 +654,7 @@ public class SimplePicture implements DigitalPicture
   * Method to set the media path by setting the directory to use
   * @param directory the directory to use for the media path
   */
- /****** Not implemented in Turtle
+ /****** Not implemented in turtleClasses.Turtle
  public static void setMediaPath(String directory) { 
    FileChooser.setMediaPath(directory);
  }
@@ -666,7 +666,7 @@ public class SimplePicture implements DigitalPicture
   * @return the full path name by appending
   * the file name to the media directory
   */
- /****** Not implemented in Turtle
+ /****** Not implemented in turtleClasses.Turtle
  public static String getMediaPath(String fileName) {
    return FileChooser.getMediaPath(fileName);
  }
