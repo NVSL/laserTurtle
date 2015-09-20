@@ -851,9 +851,19 @@ public class SimpleTurtle {
                 this.yPos + " heading " + this.heading + ".";
     }
 
+    /**
+     *
+     * @param filename Filename of DXF to write
+     * @param VIPmode I know what I am doing and I can break the rules
+     */
+    public void writeDXF(String filename, boolean VIPmode){
+        //Set the scaling such that 1 pixel is 0.25mm
+        writeDXF(filename, 0.25, VIPmode);
+    }
+
     public void writeDXF(String filename){
         //Set the scaling such that 1 pixel is 0.25mm
-        writeDXF(filename, 0.25);
+        writeDXF(filename, 0.25, false);
     }
 
     /**
@@ -862,7 +872,7 @@ public class SimpleTurtle {
      * @param filename dxf file to write out
      * @param scaling How much to scale the coordinates
      */
-    public void writeDXF(String filename, double scaling){
+    public void writeDXF(String filename, double scaling, boolean VIPmode){
 
         //Find the bounding box of the artwork
         double xmin, xmax, ymin, ymax;
@@ -896,10 +906,10 @@ public class SimpleTurtle {
             bad=true;
         }
 
-        System.out.println(String.format("%fx%fmm",width,height));
-
-//        if(bad)
-//            return;
+        if(bad && !VIPmode)
+            return;
+        else
+            System.out.println(String.format("Your drawing is %.2fx%.2fmm",width,height));
 
         try {
             DXFfile file = new DXFfile(filename);
