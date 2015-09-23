@@ -1,4 +1,4 @@
-package turtleClasses;
+package laserTurtle;
 
 /**
  * Class that represents a turtle which is similar to a Logo turtle.
@@ -67,4 +67,4 @@ public class Turtle extends SimpleTurtle {
     /////////////////// methods ///////////////////////
 
 
-} // this } is the end of class turtleClasses.Turtle, put all new methods before this
+} // this } is the end of class laserTurtle.Turtle, put all new methods before this

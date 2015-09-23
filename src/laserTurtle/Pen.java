@@ -1,9 +1,7 @@
-package turtleClasses;
+package laserTurtle;
 
 import java.awt.*;
 import java.awt.geom.*;
-import javax.swing.*;
-import java.io.Console;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;

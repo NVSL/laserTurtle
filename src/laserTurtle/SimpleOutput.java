@@ -1,4 +1,4 @@
-package turtleClasses;
+package laserTurtle;
 
 import javax.swing.*;
 import java.text.*;

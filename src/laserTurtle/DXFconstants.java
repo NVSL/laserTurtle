@@ -1,4 +1,4 @@
-package turtleClasses;
+package laserTurtle;
 
 /**
  * Created by sciencectn on 9/14/15.

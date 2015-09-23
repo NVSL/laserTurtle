@@ -1,12 +1,15 @@
 
-JAR = turtleClasses.jar
-SRCS = $(shell echo turtleClasses/*.java)
+JAR = laserTurtle.jar
+SRCS = $(shell echo laserTurtle/*.java)
 CLASSES = $(subst .java,.class,$(SRCS))
 
 all: $(JAR)
 
 example: $(JAR)
-	javac -cp turtleClasses.jar:. ExampleLaserTurtle.java 
+	javac -cp $(JAR):. ExampleLaserTurtle.java 
+
+snowflake: $(JAR)
+	javac -cp $(JAR):. SnowflakeTurtle.java 	
 
 $(JAR): $(CLASSES)
 	jar -cf $@ $(CLASSES)
@@ -15,5 +18,5 @@ $(JAR): $(CLASSES)
 	javac $^
 
 clean:
-	rm turtleClasses/*.class
-	rm *.jar
+	rm -f laserTurtle/*.class
+	rm -f *.jar

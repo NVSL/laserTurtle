@@ -1,4 +1,4 @@
-package turtleClasses;
+package laserTurtle;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

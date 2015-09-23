@@ -1,6 +1,6 @@
-import turtleClasses.ModelDisplay;
-import turtleClasses.Turtle;
-import turtleClasses.World;
+import laserTurtle.ModelDisplay;
+import laserTurtle.Turtle;
+import laserTurtle.World;
 
 public class SnowflakeTurtle extends Turtle {
     /**

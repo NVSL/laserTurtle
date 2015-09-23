@@ -1,7 +1,6 @@
-package turtleClasses;
+package laserTurtle;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Class that holds a digital picture and displays it.

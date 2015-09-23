@@ -1,4 +1,4 @@
-package turtleClasses;
+package laserTurtle;
 
 import java.awt.*;
 import java.awt.geom.*;
