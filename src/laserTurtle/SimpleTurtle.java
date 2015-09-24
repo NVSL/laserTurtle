@@ -870,7 +870,7 @@ public class SimpleTurtle {
      * Write out a DXF file containing all the line segments we've drawn
      *
      * @param filename dxf file to write out
-     * @param scaling How much to scale the coordinates
+     * @param scaling 1 pixel is equal to this many millimeters
      */
     public void writeDXF(String filename, double scaling, boolean VIPmode){
 
