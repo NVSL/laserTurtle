@@ -56,10 +56,6 @@ public class Fork extends Turtle{
         turtle.moveTo(366, 384);
 
 
-
-
-
-        /* YOUR MARVELOUS LASER TURTLE CREATION GOES HERE */
     }
 }
 
