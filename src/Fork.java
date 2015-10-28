@@ -55,6 +55,7 @@ public class Fork extends Turtle{
         turtle.moveTo(366, 51);
         turtle.moveTo(366, 384);
 
+        turtle.writeDXF("fork_and_knife.dxf", 0.33, true);
 
     }
 }

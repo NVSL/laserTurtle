@@ -119,6 +119,7 @@ public class Shuriken extends Turtle{
             turtle.turn(360 / sides);
         }
 
+        turtle.writeDXF("shuriken.dxf", 0.33, false);
     }
 }
 

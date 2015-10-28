@@ -39,6 +39,8 @@ public class Claw {
         turtle.forward(7);
       faceNorth(turtle);
     }
+
+    turtle.writeDXF("claw.dxf", 0.33, false);
   }
   
   public static void faceNorth( Turtle t ) {
