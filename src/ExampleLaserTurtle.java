@@ -21,40 +21,23 @@ public class ExampleLaserTurtle extends Turtle {
         super(startx, starty, modelDisplay);
     }
 
-    public void drawTree(int levels, int size){
-        if(levels == 0)
-            return;
-        forward(size);
-        turn(30);
-        drawTree(levels - 1, size / 2);
-        turn(-60);
-        drawTree(levels - 1, size / 2);
-        turn(30);
-        penUp();
-        backward(size);
-        penDown();
-    }
-
     public static void main(String[] args) {
 
         //The "world" the turtle moves around in.
         //The default is 640x480 pixels (160mmx120mm) but you can make a bigger world (see the snowflake example)
-        World earth = new World(2000,1000);
+        World earth = new World();
 
         //Make a new instance of your laser turtle class and start it at (50,50)
-        ExampleLaserTurtle turtle = new ExampleLaserTurtle(100,500,earth);
-
-        turtle.turnToFace(2000, 500);
-        turtle.drawTree(4, 320);
+        ExampleLaserTurtle turtle = new ExampleLaserTurtle(50,50,earth);
 
         //Draw a triangle
-//        turtle.moveTo(100, 100);
-//        turtle.moveTo(200, 0);
-//        turtle.moveTo(50, 50);   //Move it back to where we started
+        turtle.moveTo(100, 100);
+        turtle.moveTo(200, 0);
+        turtle.moveTo(50, 50);   //Move it back to where we started
 
         //Now, convert the steps the turtle just took into something a laser cutter can understand
         //Laser cutters speak the strange language of "DXF files"
-//        turtle.writeDXF("triangle.dxf");
+        turtle.writeDXF("triangle.dxf");
     }
 }
 
